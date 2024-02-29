@@ -79,6 +79,18 @@ class Pilha{
     isFull(){
         return this.size() === this.tam;
     }
+
+    /**
+     * Create the toString
+     * @toString
+     */
+    toString(){
+        let  texto = "";
+        for(let i = 0; i <= this.topo; i++){
+            texto+=texto;
+        }
+        return texto;
+    }
 }
 
 export default Pilha;
