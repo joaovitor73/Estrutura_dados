@@ -1,4 +1,4 @@
-import lista from "../Estrutura_dados/estruturas/src/lista";
+import lista from "../../estruturas/src/lista";
 const reverse = (listaFunction) => {
     let l = new lista();
     for(let elemento of listaFunction){
