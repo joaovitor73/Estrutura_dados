@@ -27,8 +27,24 @@ class lista{
         this.size++;
     }
 
-    addAt(dado, posicao){
-        this.size++;
+    addAt(dado, posicao){ //Lista começa na posição 1
+        if(posicao <= this.length() && posicao>= 1){
+            let novoNo = new no(dado);
+            let cont = 0;
+            let aux = this.head;
+            let anterior, posterior;
+            while(cont != posicao){
+                posterior = aux.proximo;
+                anterior = aux;
+                aux = aux.proximo;      
+                cont++; 
+            }
+            novoNo.proximo = posterior;
+            anterior.proximo = novoNo;
+            this.size++;
+        }else{
+            throw new Error("NullPointerException");
+        }
     }
 
     removeFirst(){
@@ -57,7 +73,25 @@ class lista{
         }
     }
     removeAt(posicao){
-        this.size--;
+        if(!this.isEmpty()){
+            if(posicao <= this.length() && posicao>= 1){
+                let cont = 0;
+                let aux = this.head;
+                let anterior, posterior;
+                while(cont != posicao){
+                    posterior = aux.proximo;
+                    anterior = aux;
+                    aux = aux.proximo;      
+                    cont++; 
+                }
+                anterior.proximo = posterior.proximo;
+                this.size--;
+            }else{
+                throw new Error("NullPointerException");
+            }
+        }else{
+            throw new Error("underflow");
+        }
     }
 
     isEmpty(){
@@ -74,9 +108,29 @@ class lista{
                 aux = aux.proximo;
             }
         }else{
-            throw new Error("underflow");
+            return "Lista vazia";
         }
         return false;
+    }
+
+    searchPosicao(posicao){//Falta implementar
+        if(!this.isEmpty()){
+            if(posicao >= 1 && posicao <= this.length()){
+                let aux = this.head.proximo;
+                let cont = 1;
+                while(aux.proximo!=null){
+                    if(cont === posicao){
+                        return aux;
+                    }
+                    aux = aux.proximo;
+                    cont++;
+                }
+            }else{
+                throw new Error("NullPointerException");
+            }
+        }else{
+            return "Lista vazia";
+        }
     }
 
     length(){
