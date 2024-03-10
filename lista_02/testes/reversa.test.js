@@ -1,4 +1,4 @@
-import reversa from "../Estrutura_dados/lista_02/src/reversa";
+import reversa from "../src/reversa";
 
 test("Revertendo uma fila",
     () => {

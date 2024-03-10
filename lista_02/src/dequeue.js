@@ -1,4 +1,4 @@
-import Fila from "../../../src/Fila";
+import Fila from "../../estruturas/src/Fila";
 class dequeue{
     constructor(capacidade = 5){
         this.capacidade = capacidade;
