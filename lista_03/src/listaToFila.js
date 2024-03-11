@@ -1,4 +1,4 @@
-import lista from "../Estrutura_dados/estruturas/src/lista";
+import lista from "../../estruturas/src/lista";
 class listaToFila{
     constructor(){
         this.lista = new lista();
