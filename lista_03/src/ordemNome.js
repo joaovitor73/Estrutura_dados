@@ -1,4 +1,4 @@
-import lista from "../Estrutura_dados/estruturas/src/lista";
+import lista from "../../estruturas/src/lista";
 const ordemNome = (listaFunction) => {
     let l = listaFunction;
     if(l.length() > 1){
@@ -12,9 +12,10 @@ const ordemNome = (listaFunction) => {
        while(l.length() !== 0){
             aux = l.head.proximo;
             nomeMenor = aux.dado;
+            cont = 1;
+            indiceNomeMenor = 1;
             while(aux!=null){
                 i=0;
-                cont = 1;
                 chegueiAoFim = false;
                 while(aux.dado[i].toUpperCase().charCodeAt(0) === nomeMenor[i].toUpperCase().charCodeAt(0)){
                     i++;
@@ -23,31 +24,35 @@ const ordemNome = (listaFunction) => {
                         break;
                     }
                 }
-                console.log(nomeMenor + " " + aux.dado + " " + chegueiAoFim);
                 if(chegueiAoFim){
                     if(i == aux.dado.length &&  i !== nomeMenor.length){
                         nomeMenor = aux.dado;
                         indiceNomeMenor = cont;
                     }
                 }else{
-                    console.log("Letras diferentes")
+                    console.log("Letras diferentes" + " " + nomeMenor + " " + aux.dado)
                     if(aux.dado[i].toUpperCase().charCodeAt(0) < nomeMenor[i].toUpperCase().charCodeAt(0)){
+                        console.log(nomeMenor + " " + aux.dado + " " + chegueiAoFim + " " + l.length() + " " + cont + " " +aux.dado[i].toUpperCase().charCodeAt(0) + " " + nomeMenor[i].toUpperCase().charCodeAt(0) + " " + aux.dado[i] + " " + nomeMenor[i]);
                         nomeMenor = aux.dado;
                         indiceNomeMenor = cont;
                     }
                 }
+                console.log(indiceNomeMenor + " " + nomeMenor);
                 cont++;
                 aux = aux.proximo;
             }
+            console.log("estou fora " + l.searchPosicao(indiceNomeMenor));
             console.log(indiceNomeMenor);
             l.removeAt(indiceNomeMenor);
             listaOrdenada.append(nomeMenor);
        }
-       console.log("lista Ordenada")
-       for(let i = 1; i <= listaOrdenada.length(); i++){
-            console.log(listaOrdenada.searchPosicao(i) + " " + i + "\n" );
-       }
-       return listaOrdenada;
+       let resposta = "";
+        aux = listaOrdenada.head.proximo;
+        while(aux !== null){
+            resposta+=aux.dado + " ";
+            aux = aux.proximo;
+        }
+        return resposta;
     }else{
         return "Existe apenas um elemento na lista";
     }

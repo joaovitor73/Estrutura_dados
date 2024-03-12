@@ -1,12 +1,13 @@
 import ordemIdade from "../Estrutura_dados/lista_03/src/ordemIdade";
 import lista from "../Estrutura_dados/estruturas/src/lista";
-import ordemNome from "../src/ordemNome";
+import ordemNome from "../Estrutura_dados/lista_03/src/ordemNome";
 let l;
 beforeEach(
     () => {
         l = new lista();
     }
 );
+
 
 test("Lista ordenada por idade",
     () => {
@@ -23,13 +24,13 @@ test("Lista ordenada por idade",
 
 test("Lista ordenada por alfabeto",
     () => {
-        l.append("Ana");
+        l.append("Jessica");
         l.append("Bia");
         l.append("João");
         l.append("Carol");
         l.append("Bianca");
         l.append("Tabata");
-        console.log(ordemNome(l))
+        expect(ordemIdade(l)).toBe("Bia Bianca Carol Jessica João Tabata ");
     }
 );
 
